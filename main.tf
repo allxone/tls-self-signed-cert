@@ -25,6 +25,7 @@ resource "tls_self_signed_cert" "ca" {
   is_ca_certificate = true
 
   validity_period_hours = var.validity_period_hours
+  early_renewal_hours = var.early_renewal_hours
   allowed_uses          = var.ca_allowed_uses
 
   subject {
@@ -66,6 +67,7 @@ resource "tls_locally_signed_cert" "leaf" {
   ca_cert_pem        = var.ca_cert_override == "" ? element(concat(tls_self_signed_cert.ca.*.cert_pem, [""]), 0) : var.ca_cert_override
 
   validity_period_hours = var.validity_period_hours
+  early_renewal_hours = var.early_renewal_hours 
   allowed_uses          = var.allowed_uses
 }
 

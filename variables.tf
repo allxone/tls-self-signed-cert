@@ -32,6 +32,10 @@ variable "validity_period_hours" {
   description = "The number of hours after initial issuing that the certificate will become invalid."
 }
 
+variable "early_renewal_hours" {
+  description = "If set, the resource will consider the certificate to have expired the given number of hours before its actual expiry time."
+}
+
 variable "ca_allowed_uses" {
   description = "List of keywords from RFC5280 describing a use that is permitted for the CA certificate. For more info and the list of keywords, see https://www.terraform.io/docs/providers/tls/r/self_signed_cert.html#allowed_uses."
   type        = list(string)
